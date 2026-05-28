@@ -1,19 +1,4 @@
-# Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-env/
-venv/
-ENV/
-.venv/
-
-# Flask
-instance/
-.webassets-cache
-
-# Python dotenv
+# dotenv
 .env
 
 # Node / React
