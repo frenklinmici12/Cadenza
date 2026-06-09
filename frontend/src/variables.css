@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* ── Colors ──────────────────────────────────────────────── */
+  --color-bg:            #F6FBF6;
+  --color-text:          #1E3A24;
+  --color-text-muted:    #4A6651;
+  --color-accent:        #6DC47A;
+  --color-accent-hover:  #59B367;
+  --color-accent-light:  #B8E6C0;
+  --color-accent-dark:   #3A8A4A;
+  --color-border:        rgba(184, 230, 192, 0.4);
+
+  /* ── Typography ──────────────────────────────────────────── */
+  --font:                'Plus Jakarta Sans', sans-serif;
+
+  /* ── Spacing ─────────────────────────────────────────────── */
+  --nav-height:          80px;
+  --page-padding-x:      60px;
+
+  /* ── Shadows ─────────────────────────────────────────────── */
+  --shadow-btn:          0 4px 18px rgba(109, 196, 122, 0.32);
+  --shadow-btn-hover:    0 8px 24px rgba(109, 196, 122, 0.42);
+  --shadow-card:         0 8px 40px rgba(109, 196, 122, 0.10);
+
+  /* ── Border Radius ───────────────────────────────────────── */
+  --radius-sm:           6px;
+  --radius-md:           8px;
+  --radius-lg:           16px;
+}
