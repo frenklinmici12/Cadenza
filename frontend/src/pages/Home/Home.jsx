@@ -17,7 +17,7 @@ export default function Home() {
     return (
         <>
             <nav>
-                <img src="../../public/cadenza_logo.png" alt="logo"></img>
+                <img src="/cadenza_logo.png" alt="logo"></img>
                 <h3 onClick={scrollToHome}>Home</h3>
                 <h3 onClick={scrollToAbout}>About</h3>
             </nav>
