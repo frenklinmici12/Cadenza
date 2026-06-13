@@ -10,7 +10,8 @@ import {Route, BrowserRouter as Router, Routes} from 'react-router-dom';
 import './variables.css'
 
 //import pages here as i do them
-import Home from './pages/Home/Home.jsx';
+import Home from './pages/Home.jsx';
+import Chat from './pages/Chat.jsx'
 
 import './App.css';
 
@@ -18,7 +19,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home/>}/>//
+        <Route path="/" element={<Home/>}/>
+        <Route path='/chat' element={<Chat/>}/>
       </Routes>
     </Router>
   );

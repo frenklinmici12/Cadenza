@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
-import "./Home.css"
+import "../styling/Home.css"
 
 export default function Home() {
     const aboutRef = useRef(null);
