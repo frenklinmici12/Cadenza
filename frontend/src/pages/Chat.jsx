@@ -5,10 +5,42 @@ import { useNavigate } from "react-router-dom";
 import "../styling/Chat.css"
 
 export default function Chat() {
+    const backend = import.meta.env.VITE_API_URL;
     const [input, setInput] = useState("");
     const [messages, setMessages] = useState(["hi there!", "hi"]); // placeholder chat value 
 
     const navigate = useNavigate();
+
+    const sendMessage = async () => {
+        const response = await fetch(backend + "/api/chat", {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+            message: input,
+            }),
+        });
+
+        const userMessage = input;
+
+        setInput("");
+
+        const data = await response.json();
+
+        setMessages(prev => [
+            ...prev,
+            { sender: "user", text: userMessage },
+            { sender: "ai", text: data.reply }
+        ]);
+    };
+
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter") {
+            sendMessage();
+            console.log("hi");
+        }
+    }
 
     return (
         <>
@@ -31,6 +63,13 @@ export default function Chat() {
                 <li>You are talking to y.</li>
                 <li>Your goal is z.</li>
             </ul>
+            <br/><br/><br/><br/>
+
+            <h2>Feedback:</h2>
+            <ul>
+                <li>Be more confident!</li>
+                <li>Perhaps make a joke to lighten the mood!</li>
+            </ul>
           </div>
           <div className="right-side">
             <h1>Discussion Title</h1>
@@ -43,8 +82,8 @@ export default function Chat() {
                     ))}
                 </div>
                 <div className="response">
-                    <input type="text" placeholder="Form your response here..."></input>
-                    <button>Send</button>
+                    <input value={input} type="text" placeholder="Form your response here..." onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => handleKeyDown(e)}></input>
+                    <button onClick={() => sendMessage()}>Send</button>
                 </div>
             </div>
           </div>
