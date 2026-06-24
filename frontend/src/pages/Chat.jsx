@@ -23,6 +23,7 @@ export default function Chat() {
         });
 
         const userMessage = input;
+        console.log(userMessage);
 
         setInput("");
 
@@ -30,7 +31,7 @@ export default function Chat() {
 
         setMessages(prev => [
             ...prev,
-            { sender: "user", text: userMessage },
+            { sender: "user", text: userMessage},
             { sender: "ai", text: data.reply }
         ]);
     };
@@ -63,7 +64,7 @@ export default function Chat() {
                 <li>You are talking to y.</li>
                 <li>Your goal is z.</li>
             </ul>
-            <br/><br/><br/><br/>
+            <br/>
 
             <h2>Feedback:</h2>
             <ul>

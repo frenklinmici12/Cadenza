@@ -12,6 +12,7 @@ import './variables.css'
 //import pages here as i do them
 import Home from './pages/Home.jsx';
 import Chat from './pages/Chat.jsx'
+import ScenarioSelect from './pages/ScenarioSelect.jsx';
 
 import './App.css';
 
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path='/chat' element={<Chat/>}/>
+        <Route path='scenario-select' element={<ScenarioSelect/>}/>
       </Routes>
     </Router>
   );

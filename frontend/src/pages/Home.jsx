@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
+
 import "../styling/Home.css"
 
 export default function Home() {
     const aboutRef = useRef(null);
     const homeRef = useRef(null);
     const howItWorksRef = useRef(null);
+
+    const navigate = useNavigate();
 
     const scrollToAbout = () => {
         aboutRef.current.scrollIntoView({ behavior: "smooth" });
@@ -42,7 +46,7 @@ export default function Home() {
                         Live to your fullest, with Cadenza.
 
                     </h1>
-                    <button>Get Started Now!</button>
+                    <button onClick={() => navigate("/scenario-select")}>Get Started Now!</button>
                 </div>
                 <div className="home-right">
                     <img src="/home_placeholder.jpg" alt="view"></img>
