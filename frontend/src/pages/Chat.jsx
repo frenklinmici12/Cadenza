@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -6,12 +6,36 @@ import "../styling/Chat.css"
 
 export default function Chat() {
     const backend = import.meta.env.VITE_API_URL;
-    const { scenario } = useParams(); // something like job_interview or first_date
+    const { scenarioName } = useParams(); // something like job_interview or first_date
     const [input, setInput] = useState("");
     const [messages, setMessages] = useState(["hi there!", "hi"]); // placeholder chat value 
+    const [scenario, setScenario] = useState(null);
+    const [feedback, setFeedback] = useState(["nothing yet", "lol"]);
+    
 
     const navigate = useNavigate();
 
+    //fetch from backend
+    const fetchScenario = async () => {
+        const backend = import.meta.env.VITE_API_URL //where our backend lives
+     
+        try {
+            const res = await fetch(backend + "/api/scenarios/" + scenarioName);
+            const data = await res.json();
+            
+            // do stuff
+            setScenario(data);
+        } catch (err) {
+            console.log("Error fetching scenarios: ", err);
+        }
+    }
+
+    //fetch API data from backend
+    useEffect(() => {
+        fetchScenario();
+    }, [scenarioName]);
+
+    // WIP
     const sendMessage = async () => {
         const response = await fetch(backend + "/api/chat", {
             method: "POST",
@@ -44,6 +68,9 @@ export default function Chat() {
         }
     }
 
+    if (!scenario) return (<div>Loading...</div>);
+
+
     return (
         <>
          <nav>
@@ -60,18 +87,15 @@ export default function Chat() {
        
           <div className="scenario-info">
             <h2>Scenario Info:</h2>
-            <ul>
-                <li>Setting is x.</li>
-                <li>You are talking to y.</li>
-                <li>Your goal is z.</li>
-            </ul>
+            <p className="item">Situation: {" " + scenario.situation}</p>
+            <p className="item">With: {scenario.character.name + " | " + scenario.character.role + " | Personality: " + scenario.character.personality}</p>
+            <p className="item">Goal: {" " + scenario.goal}</p>
             <br/>
 
             <h2>Feedback:</h2>
-            <ul>
-                <li>Be more confident!</li>
-                <li>Perhaps make a joke to lighten the mood!</li>
-            </ul>
+            {feedback.map((feedback, i) => (
+                <p key={i} className="item">{feedback}</p>
+            ))}
           </div>
           <div className="right-side">
             <h1>Discussion Title</h1>

@@ -21,7 +21,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path='/chat/:chatTitle' element={<Chat/>}/>
+        <Route path='/chat/:scenarioName' element={<Chat/>}/>
         <Route path='scenario-select' element={<ScenarioSelect/>}/>
       </Routes>
     </Router>

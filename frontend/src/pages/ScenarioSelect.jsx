@@ -28,7 +28,6 @@ export default function ScenarioSelect() {
             const res = await fetch(backend + "/api/scenarios");
             const data = await res.json();
             setScenarios(data);
-            console.log(backend)
         } catch (err) {
             console.log("Error fetching scenarios: ", err);
         }
