@@ -7,7 +7,7 @@ import "../styling/ScenarioSelect.css"
 function Scenario({ scenario }) {
     const navigate = useNavigate();
     return (
-        <div className="scenario" onClick={() => navigate("/chat/" /*+ scenario.name)*/)}>
+        <div className="scenario" onClick={() => navigate("/chat/" + scenario.name)}>
             <h5>{scenario.situation}</h5>
             <p>Goal: {scenario.goal}</p>
         </div>
@@ -19,14 +19,27 @@ export default function ScenarioSelect() {
 
     const [scenarios, setScenarios] = useState([
         {
-            name: "Job-Interview",
-            situation: "Talking to a recruitor for SWE Internship",
-            goal: "Make a good impression"
+            id: "job_interview",
+            displayName: "Job Interview",
+            situation: "Talking to a recruiter for SWE Internship",
+            character: {
+                name: "Jane",
+                role: "SWE Recruiter",
+                personality: "Professsional, friendly"
+
+            },
+            goal: "Make a good impression in hopes of getting the position"
         },
         {
-            name: "First Date",
-            situation: "Dinner date with girl.",
-            goal: "Make a good impression"
+            name: "first_date",
+            displayName: "First Date",
+            situation: "Dinner date with potential romantic interest.",
+            character: {
+                name: "Stacy",
+                role: "Potential romantic interest",
+                personality: "Kind, but also shy"
+            },
+            goal: "Make her feel comfortable with you"
         }
     ]);
 
