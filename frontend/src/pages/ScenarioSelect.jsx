@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -9,43 +9,36 @@ function Scenario({ scenario }) {
     return (
         <div className="scenario" onClick={() => navigate("/chat/" + scenario.name)}>
             <h5>{scenario.situation}</h5>
+            <p>With: {scenario.character.name + " | " + scenario.character.role + " | Personality: " + scenario.character.personality}</p>
             <p>Goal: {scenario.goal}</p>
         </div>
     )
 }
 
 export default function ScenarioSelect() {
-    const backend = import.meta.env.VITE_API_URL;
-
-    const [scenarios, setScenarios] = useState([
-        {
-            id: "job_interview",
-            displayName: "Job Interview",
-            situation: "Talking to a recruiter for SWE Internship",
-            character: {
-                name: "Jane",
-                role: "SWE Recruiter",
-                personality: "Professsional, friendly"
-
-            },
-            goal: "Make a good impression in hopes of getting the position"
-        },
-        {
-            name: "first_date",
-            displayName: "First Date",
-            situation: "Dinner date with potential romantic interest.",
-            character: {
-                name: "Stacy",
-                role: "Potential romantic interest",
-                personality: "Kind, but also shy"
-            },
-            goal: "Make her feel comfortable with you"
-        }
-    ]);
-
-
+    const [scenarios, setScenarios] = useState([]);
 
     const navigate = useNavigate();
+
+    //fetch from backend
+    const fetchScenarios = async () => {
+        const backend = import.meta.env.VITE_API_URL //where our backend lives
+     
+        try {
+            const res = await fetch(backend + "/api/scenarios");
+            const data = await res.json();
+            setScenarios(data);
+            console.log(backend)
+        } catch (err) {
+            console.log("Error fetching scenarios: ", err);
+        }
+    }
+
+    //fetch API data from backend
+    useEffect(() => {
+        fetchScenarios();
+    }, [])
+
 
     return (
         <>

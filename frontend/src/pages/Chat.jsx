@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import "../styling/Chat.css"
 
 export default function Chat() {
     const backend = import.meta.env.VITE_API_URL;
+    const { scenario } = useParams(); // something like job_interview or first_date
     const [input, setInput] = useState("");
     const [messages, setMessages] = useState(["hi there!", "hi"]); // placeholder chat value 
 
