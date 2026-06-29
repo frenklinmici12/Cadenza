@@ -12,13 +12,33 @@ const scenarios = [
     },
     {
         name: "first_date",
-        situation: "Dinner Date With Potential Romantic Interest.",
+        situation: "Dinner Date With a Potential Romantic Interest",
         character: {
             name: "Stacy",
-            role: "Potential romantic interest",
+            role: "Potential Romantic Interest",
             personality: "Kind, but also shy"
         },
         goal: "Make her feel comfortable with you"
+    },
+    {
+        name: "class_introduction",
+        situation: "First day of a university class, introducing yourself to classmates.",
+        character: {
+            name: "Mia",
+            role: "Classmate",
+            personality: "Shy, polite, a bit awkward"
+        },
+        goal: "Start a natural conversation and make a friend"
+    },
+    {
+        name: "networking_event",
+        situation: "You are at a tech networking event meeting new people.",
+        character: {
+            name: "Raskolnikov",
+            role: "Software Engineer at a startup",
+            personality: "Outgoing, friendly, talkative"
+        },
+        goal: "Make a good professional connection"
     }
 ];
 
