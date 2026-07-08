@@ -13,6 +13,9 @@ import './variables.css'
 import Home from './pages/Home.jsx';
 import Chat from './pages/Chat.jsx'
 import ScenarioSelect from './pages/ScenarioSelect.jsx';
+import Auth from './pages/Auth.jsx';
+
+import ProtectedRoute from './pages/ProtectedRoute.jsx';
 
 import './App.css';
 
@@ -21,8 +24,9 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path='/chat/:scenarioName' element={<Chat/>}/>
-        <Route path='scenario-select' element={<ScenarioSelect/>}/>
+        <Route path='/chat/:scenarioName' element={<ProtectedRoute><Chat/></ProtectedRoute>}/>
+        <Route path='scenario-select' element={<ProtectedRoute><ScenarioSelect/></ProtectedRoute>}/>
+        <Route path='auth' element={<Auth/>}/>
       </Routes>
     </Router>
   );

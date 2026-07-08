@@ -2,10 +2,16 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+
+import supabase from "../lib/supabase";
 
 import "../styling/Home.css"
+import Navbar from "../components/Navbar";
 
 export default function Home() {
+    const { user } = useAuth();
+
     const aboutRef = useRef(null);
     const homeRef = useRef(null);
     const howItWorksRef = useRef(null);
@@ -22,21 +28,9 @@ export default function Home() {
         howItWorksRef.current.scrollIntoView({ behavior: "smooth" });
     };
    
-
-
     return (
         <>
-            <nav>
-                <img src="/cadenza_logo.png" alt="logo"></img>
-                
-                <div className="nav-links">
-                    <h3 onClick={scrollToHome}>Home</h3>
-                    <h3 onClick={scrollToHowItWorks}>How it Works</h3>
-                    <h3 onClick={scrollToAbout}>About</h3>
-                    <h3>Register</h3>
-                    <h3>Sign In</h3>
-                </div>
-            </nav>
+            <Navbar></Navbar>
 
             <div className="Home" ref={homeRef}>
                 <div className="home-left">
@@ -44,7 +38,6 @@ export default function Home() {
                         Speak Better. <br/>
                         Feel Better. <br/>
                         Live to your fullest, with Cadenza.
-
                     </h1>
                     <button onClick={() => navigate("/scenario-select")}>Get Started Now!</button>
                 </div>
@@ -58,7 +51,7 @@ export default function Home() {
             </div>
 
             <div className="About" ref={aboutRef}>
-
+                
             </div>
         </>
     )

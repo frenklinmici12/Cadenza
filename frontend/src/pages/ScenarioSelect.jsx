@@ -9,7 +9,7 @@ function Scenario({ scenario }) {
     return (
         <div className="scenario" onClick={() => navigate("/chat/" + scenario.name)}>
             <h5>{scenario.situation}</h5>
-            <p>With: {scenario.character.name + " | " + scenario.character.role + " | Personality: " + scenario.character.personality}</p>
+            <p>With: {scenario.character.name + " | " + scenario.character.role + " | " + scenario.character.personality}</p>
             <p>Goal: {scenario.goal}</p>
         </div>
     )

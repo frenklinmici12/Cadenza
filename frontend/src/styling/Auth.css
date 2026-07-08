@@ -1,0 +1,116 @@
+/* ── Auth Page ─────────────────────────────────────────────── */
+
+.auth-content {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding: calc(var(--nav-height) + 40px) var(--page-padding-x) 40px;
+}
+
+
+/* ── Auth Cards ───────────────────────────────────────────── */
+
+.log-in,
+.register {
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 40px;
+  background: rgba(246, 251, 246, 0.9);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+
+.log-in::before,
+.register::before {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 10px;
+}
+
+.log-in::before {
+  content: "Login";
+}
+
+.register::before {
+  content: "Create Account";
+}
+
+
+/* ── Inputs ───────────────────────────────────────────────── */
+
+.auth-content input {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: #ffffff;
+  font-family: var(--font);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  outline: none;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.auth-content input::placeholder {
+  color: var(--color-text-muted);
+}
+
+
+.auth-content input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(109, 196, 122, 0.15);
+}
+
+
+/* ── Buttons ──────────────────────────────────────────────── */
+
+.auth-content button {
+  margin-top: 10px;
+  background: var(--color-accent);
+  color: white;
+  border: none;
+  padding: 13px 25px;
+  border-radius: var(--radius-md);
+  font-family: var(--font);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.18s ease;
+}
+
+
+.auth-content button:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-2px);
+}
+
+
+.auth-content button:active {
+  transform: translateY(0);
+}
+
+
+/* ── Responsive ───────────────────────────────────────────── */
+
+@media (max-width: 850px) {
+
+  .auth-content {
+    flex-direction: column;
+    gap: 30px;
+    padding: 120px 24px 40px;
+  }
+
+  .log-in,
+  .register {
+    width: min(380px, 100%);
+  }
+
+}

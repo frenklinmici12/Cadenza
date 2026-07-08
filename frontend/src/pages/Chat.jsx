@@ -17,18 +17,43 @@ export default function Chat() {
 
     //fetch from backend
     const fetchScenario = async () => {
-        const backend = import.meta.env.VITE_API_URL //where our backend lives
-     
         try {
             const res = await fetch(backend + "/api/scenarios/" + scenarioName);
             const data = await res.json();
             
             // do stuff
             setScenario(data);
+            initializeScenario(data);
         } catch (err) {
             console.log("Error fetching scenarios: ", err);
         }
     }
+    
+    const initializeScenario = async (scenario) => {
+        try {
+            const res = await fetch(backend + "/api/chat/start", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    scenario,
+                }),
+            });
+
+            const data = await res.json();
+
+            // Gemini's first message
+            setMessages([
+                {
+                    sender: "ai",
+                    text: data.reply,
+                },
+            ]);
+        } catch (err) {
+            console.log("Error initializing scenario:", err);
+        }
+    };
 
     //fetch API data from backend
     useEffect(() => {
@@ -69,7 +94,6 @@ export default function Chat() {
     }
 
     if (!scenario) return (<div>Loading...</div>);
-
 
     return (
         <>
@@ -117,3 +141,4 @@ export default function Chat() {
         </>
     )
 }
+/*change to msg.sender so ai and your messages can be styled differently */
