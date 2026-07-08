@@ -1,7 +1,8 @@
 import express from "express"
 import cors from "cors"
 import dotenv from "dotenv"
-import scenarios from "./data/scenarios.js"
+
+import scenarios from "./data/scenarios.js" // array with JSON scenario objects, gives you everything you need to know about the scenario to do the chat
 
 dotenv.config()
 
@@ -33,6 +34,11 @@ app.get("/api/scenarios/:id", (req, res) => {
     }
 
     res.json(scenario);
+});
+
+// start new chat
+app.post("/api/chat/start", async (req, res) => {
+  const { scenario } = req.body;
 });
 
 const PORT = process.env.PORT || 5000

@@ -22,9 +22,9 @@ const scenarios = [
     },
     {
         name: "class_introduction",
-        situation: "First day of a university class, introducing yourself to classmates.",
+        situation: "First Day of a University Class, Introducing Yourself to Classmates.",
         character: {
-            name: "Mia",
+            name: "Nana",
             role: "Classmate",
             personality: "Shy, polite, a bit awkward"
         },
@@ -32,7 +32,7 @@ const scenarios = [
     },
     {
         name: "networking_event",
-        situation: "You are at a tech networking event meeting new people.",
+        situation: "You Are at a Tech Networking Event Meeting New People.",
         character: {
             name: "Raskolnikov",
             role: "Software Engineer at a startup",
